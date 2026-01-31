@@ -1,23 +1,577 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+  <!-- Schema.org FAQ 구조화 데이터 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "치과교정보험에 가입하면 치아교정 비용 전체를 보장받을 수 있나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "대부분의 치과보험은 치아교정 치료를 심미적 목적의 비급여 항목으로 분류하여 보장하지 않거나, 제한적인 보장만 제공합니다. 일부 특약이나 고가 상품에서 부분적으로 지원하는 경우가 있으나, 전체 비용을 보장하는 상품은 드뭅니다. 가입 전 반드시 보장 범위를 확인해야 합니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "치과교정 치료에 보험 적용이 가능한 경우는 어떤 경우인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "국민건강보험의 경우, 단순히 심미적인 목적이 아닌 주걱턱, 안면 비대칭 등 악안면 기형을 동반하는 경우에 한해 '치아교정치료'를 급여 항목으로 인정하여 보장이 가능합니다. 그러나 개인 치과보험은 이와 별개로 특약 여부에 따라 보장 여부가 결정됩니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "치과보험 가입 시 고려해야 할 주요 사항(면책기간, 감액기간)은 무엇인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "치과보험은 가입 후 일정 기간(면책기간) 동안은 보장을 받을 수 없으며, 이후 일정 기간(감액기간) 동안은 보장 금액의 50%만 지급하는 경우가 일반적입니다. 이는 보험료 손실을 막기 위한 장치이므로, 보험 가입 전 해당 기간을 확인하여 치료 계획에 차질이 없도록 해야 합니다."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- 스타일: 부드럽고 다채로운 색, 타이틀 강조, 계층 구조 -->
+  <style>
+    :root {
+      --primary-color: #007BFF; /* 산뜻한 파랑 */
+      --secondary-color: #6C757D; /* 부드러운 회색 */
+      --accent-color: #28A745; /* 강조 녹색 */
+      --highlight-color: #E6F0FF; /* 라이트 블루 배경 */
+      --text-color: #343A40; /* 짙은 텍스트 */
+      --bg-light: #F8F9FA; /* 밝은 배경 */
+      --bg-white: #ffffff;
+      --btn-color: #DC3545; /* CTA 버튼 빨강 */
+      --btn-hover: #C82333;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      margin:0; padding:0;
+      background-color: var(--bg-light);
+      color: var(--text-color);
+      line-height:1.7;
+      font-size: 16px;
+    }
+    .container {
+      max-width: 1100px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+    header {
+      background-color: var(--primary-color);
+      padding: 30px 20px;
+      text-align: center;
+      color: var(--bg-white);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      font-weight:900;
+    }
+    header h1 a {
+      color: var(--bg-white);
+      text-decoration: none;
+    }
+    .hero {
+      background: linear-gradient(135deg, var(--primary-color) 0%, #00BFFF 100%);
+      color: var(--bg-white);
+      text-align: center;
+      padding: 80px 20px;
+      box-shadow: inset 0 -10px 10px rgba(0,0,0,0.1);
+    }
+    .hero h1 {
+      font-size: 3.8em;
+      margin-bottom: 20px;
+      font-weight:900;
+      line-height:1.2;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    }
+    .hero p {
+      font-size: 1.5em;
+      margin-bottom: 30px;
+      font-weight: 400;
+    }
+    .cta-btn {
+      background-color: var(--btn-color);
+      color: var(--bg-white);
+      padding: 18px 45px;
+      font-size:1.4em;
+      font-weight: 700;
+      border:none;
+      border-radius:50px;
+      cursor:pointer;
+      transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    }
+    .cta-btn:hover {
+      background-color: var(--btn-hover);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+    .compare-form-box {
+      background-color: var(--bg-white);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      margin-top: 30px;
+      text-align: left;
+    }
+    .compare-form-box h2 {
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 25px;
+      font-size:2.2em;
+      font-weight:700;
+    }
+    .compare-form-box label {
+      display: block;
+      margin-bottom:8px;
+      font-weight:700;
+      font-size: 1.1em;
+      color: var(--text-color);
+    }
+    .compare-form-box input, .compare-form-box select {
+      width:100%;
+      padding:14px;
+      margin-bottom:20px;
+      border:1px solid #ddd;
+      border-radius:8px;
+      box-sizing:border-box;
+      font-size: 1em;
+      transition: border-color 0.3s;
+    }
+    .compare-form-box input:focus, .compare-form-box select:focus {
+      border-color: var(--primary-color);
+      outline: none;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+    }
+
+    .content-section {
+      margin-top: 50px;
+      background-color: var(--bg-white);
+      padding: 60px 0;
+      border-radius:10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    .content-section h2 {
+      font-size: 3em;
+      color: var(--primary-color);
+      margin-bottom:30px;
+      font-weight:900;
+      text-align:center;
+      border-bottom: 3px solid var(--accent-color);
+      display: inline-block;
+      padding-bottom: 10px;
+      margin-left: 50%;
+      transform: translateX(-50%);
+    }
+    .content-section h3 {
+      font-size:2em;
+      color: var(--primary-color);
+      margin-top:40px;
+      margin-bottom:20px;
+      font-weight:700;
+      border-left: 5px solid var(--accent-color);
+      padding-left: 15px;
+    }
+    .feature-grid {
+      display:flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top:30px;
+    }
+    .feature-grid .item {
+      width: calc(33.33% - 20px);
+      margin:10px 0;
+      padding:30px;
+      background-color: var(--highlight-color);
+      border-radius:10px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .feature-grid .item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+    .feature-grid .item img {
+      width:80px; height:80px;
+      margin-bottom:15px;
+    }
+    .feature-grid .item h3 {
+      margin: 0 0 10px;
+      font-size: 1.3em;
+      color: var(--primary-color);
+    }
+    .keyword-list {
+      list-style:none;
+      padding:0;
+      display:flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top:30px;
+    }
+    .keyword-list li {
+      background-color: var(--secondary-color);
+      color: var(--bg-white);
+      padding:12px 25px;
+      margin:7px;
+      border-radius:25px;
+      font-weight:500;
+      font-size: 0.95em;
+      transition: background-color 0.3s;
+    }
+    .keyword-list li:hover {
+      background-color: var(--primary-color);
+    }
+
+    /* FAQ CSS */
+    .faq-item {
+      border: 1px solid #ddd;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .faq-item h3 {
+      cursor:pointer;
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      font-size:1.4em;
+      color: var(--primary-color);
+      background-color: var(--bg-light);
+      padding: 20px;
+      margin: 0;
+      transition: background-color 0.3s;
+    }
+    .faq-item h3:hover {
+        background-color: var(--highlight-color);
+    }
+    .faq-item h3::after {
+      content: '+';
+      font-size:1.5em;
+      color: var(--secondary-color);
+      transition: transform 0.3s;
+    }
+    .faq-item.active h3::after {
+      content: '-';
+      transform: rotate(180deg);
+    }
+    .faq-item p {
+      display: none;
+      padding: 20px;
+      color:#555;
+      font-size:1.1em;
+      background-color: var(--bg-white);
+      border-top: 1px solid #ddd;
+    }
+    .faq-item.active p {
+      display: block;
+    }
+
+    /* Table CSS */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .data-table th, .data-table td {
+      border: 1px solid #eee;
+      padding: 15px;
+      text-align: center;
+      font-size: 1em;
+    }
+    .data-table th {
+      background-color: var(--highlight-color);
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+    .data-table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    .data-table tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    footer {
+      background-color: var(--primary-color);
+      color: var(--bg-white);
+      text-align:center;
+      padding: 40px 20px;
+      font-size:0.9em;
+      margin-top: 50px;
+    }
+    footer a {
+      color: var(--bg-white);
+      text-decoration:none;
+      margin:0 10px;
+    }
+    footer a:hover {
+      text-decoration:underline;
+    }
+    ul, ol {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    p, li {
+        color: var(--text-color);
+        font-size: 1.1em;
+    }
+
+    /* Media Queries for Responsiveness */
+    @media (max-width:992px) {
+      .feature-grid .item { width: calc(50% - 20px); }
+      .hero h1 { font-size: 3em; }
+      .content-section h2 { font-size: 2.5em; }
+    }
+    @media (max-width:768px) {
+      .hero h1 { font-size:2.4em; }
+      .hero p { font-size:1.2em; }
+      .cta-btn { padding:15px 30px; font-size:1.1em; }
+      .compare-form-box { padding:25px; }
+      .content-section h2 { font-size:2.2em; }
+      .feature-grid .item { width:100%; margin:10px 0; }
+      .keyword-list li { margin:3px; font-size:0.9em; }
+      .content-section h3 { font-size: 1.8em; }
+      .data-table th, .data-table td { font-size: 0.9em; padding: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1><a href="/">치과교정보험 가격 비교센터</a></h1>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>2026년 치과교정보험<br>최저가 견적 비교 서비스</h1>
+        <p>치아교정 비용 부담, 이제 줄여보세요. 전문 치과보험 상품을 비교하고 내게 딱 맞는 저렴한 보험을 찾아드립니다.</p>
+        <div class="compare-form-box">
+          <h2>맞춤형 치과보험 무료 비교 견적 요청</h2>
+          <p>간단한 정보 입력으로 여러 보험사의 치과보험 상품을 한눈에 비교하고, 전문가의 조언을 받아보세요.</p>
+          <form action="#" method="post">
+            <label for="name">이름</label>
+            <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required>
+            <label for="phone">연락처</label>
+            <input type="tel" id="phone" name="phone" placeholder="휴대폰 번호를 입력하세요" required>
+            <label for="birthdate">생년월일</label>
+            <input type="text" id="birthdate" name="birthdate" placeholder="예: 19901020 (8자리)" required>
+            <label for="coverage-type">원하는 치과보험 보장 내용</label>
+            <select id="coverage-type" name="coverage-type" required>
+              <option value="">선택하세요</option>
+              <option value="ortho">치아교정 특약(심미치료 포함)</option>
+              <option value="basic">기본 보장(충치/임플란트)</option>
+              <option value="comprehensive">종합 보장(교정/임플란트/크라운)</option>
+            </select>
+            <button type="submit" class="cta-btn">무료 견적 요청하기</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>치과교정 치료, 왜 보험이 필요할까요?</h2>
+        <p>치아교정은 단순히 외모를 개선하는 심미적인 치료를 넘어, 치아의 기능적 문제를 해결하고 전반적인 구강 건강을 향상시키는 중요한 치료입니다. 그러나 치과교정은 비급여 항목으로 분류되어 건강보험 적용이 매우 제한적이며, 수백만 원대에 달하는 높은 비용이 발생하여 많은 분들이 치료를 망설이게 됩니다. 2026년 현재에도 이러한 비용 부담은 여전히 큰 문제로 남아있습니다.</p>
+        <p>치과교정보험은 이러한 비급여 항목의 치과 치료비를 보장받을 수 있는 상품으로, 임플란트나 크라운 치료뿐만 아니라 최근에는 치아교정 비용까지 보장하는 특약 상품이 늘어나고 있습니다. 하지만 치과보험 상품마다 보장 범위와 금액, 면책/감액 기간이 천차만별이므로 꼼꼼한 비교가 필수적입니다. 본 가이드를 통해 치과교정보험의 장단점과 저렴한 가입 방법을 확인하고, 합리적인 선택을 할 수 있도록 도와드립니다.</p>
+
+        <h3 style="margin-top:50px;">치과보험 가입 시 핵심 고려 사항</h3>
+        <div class="feature-grid">
+          <div class="item">
+            <img src="https://via.placeholder.com/80/007BFF/fff?text=ICON1" alt="면책/감액 기간 아이콘">
+            <h3>면책/감액 기간 확인</h3>
+            <p>대부분의 치과보험은 가입 후 1년~2년의 면책기간을 두고 있습니다. 이 기간 동안은 보험금 지급이 안 되거나, 감액기간(50%만 지급)이 적용됩니다. 교정 치료 계획이 있다면 가입 시점을 신중하게 선택해야 합니다.</p>
+          </div>
+          <div class="item">
+            <img src="https://via.placeholder.com/80/007BFF/fff?text=ICON2" alt="보장 범위 아이콘">
+            <h3>보장 범위 명확화</h3>
+            <p>치아교정 보장은 임플란트나 충치 치료와는 별도의 특약으로 운영되는 경우가 많습니다. 특히 심미적 목적으로 치아교정 싼곳을 찾는 경우, 보험 적용 여부를 반드시 확인해야 합니다. 보장 범위를 명확히 확인하여 불필요한 비용을 절감하세요.</p>
+          </div>
+          <div class="item">
+            <img src="https://via.placeholder.com/80/007BFF/fff?text=ICON3" alt="내돈내산 후기 아이콘">
+            <h3>내돈내산 후기 및 순위 비교</h3>
+            <p>보험사별 치과보험 순위는 보장 내용, 보험료, 고객 만족도 등에 따라 다릅니다. 다양한 내돈내산 후기를 참고하여, 나에게 맞는 보험 상품을 비교하는 것이 중요합니다. 무조건 저렴한 보험보다 보장 내용이 충실한 상품을 선택하세요.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>치아교정 종류별 예상 비용 및 보험 적용 여부 (2026년 기준)</h2>
+        <p>2026년 기준, 치과교정 치료는 다양한 방법으로 이루어지고 있으며, 치료 방법에 따라 비용 차이가 매우 큽니다. 일반적인 금속 브라켓부터 심미성을 강조한 투명 교정까지, 주요 교정 방법별 특징과 평균 비용을 비교해보고, 치과교정보험 가입 시 어떤 보장을 받을 수 있는지 알아보겠습니다. 치과교정 견적을 받을 때 참고할 수 있습니다.</p>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>치료 방법</th>
+              <th>특징</th>
+              <th>평균 예상 비용 (2026년 기준)</th>
+              <th>치과보험 적용 여부 (일반)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>금속 교정 (일반 교정)</td>
+              <td>가장 일반적이며 저렴한 방식. 강한 교정력으로 효과적이지만 심미성이 낮음.</td>
+              <td>300만원 ~ 500만원</td>
+              <td>비급여 항목으로 보장 X (특약 필요)</td>
+            </tr>
+            <tr>
+              <td>세라믹 교정</td>
+              <td>치아색과 유사한 브라켓 사용. 심미성이 향상되었으나 금속보다 다소 비쌈.</td>
+              <td>400만원 ~ 600만원</td>
+              <td>비급여 항목으로 보장 X (특약 필요)</td>
+            </tr>
+            <tr>
+              <td>부분 교정</td>
+              <td>앞니 등 일부분만 교정하는 방식. 기간이 짧고 비용이 저렴한 편.</td>
+              <td>100만원 ~ 300만원</td>
+              <td>비급여 항목으로 보장 X (특약 필요)</td>
+            </tr>
+            <tr>
+              <td>투명 교정 (인비절라인 등)</td>
+              <td>탈착식 투명 장치 사용. 심미성이 매우 높지만 비용이 가장 고가이며 적용 범위 제한적.</td>
+              <td>500만원 ~ 800만원 이상</td>
+              <td>비급여 항목으로 보장 X (특약 필요)</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size: 0.9em; margin-top: 10px; color: #777;">*상기 비용은 평균적인 예상 금액이며, 치과 및 개인 상태에 따라 다를 수 있습니다. 정확한 치과교정 가격은 반드시 치과 방문 후 견적을 통해 확인해야 합니다.</p>
+
+        <h3>치과보험 상품 비교: 치아교정 특약의 장단점</h3>
+        <p>치아교정을 위한 치과보험 가입은 일반 치아보험과는 다른 관점에서 접근해야 합니다. 일반 치아보험은 주로 충치, 임플란트, 크라운 보철 치료에 초점을 맞추지만, 치과교정보험은 심미 치료인 교정에 특화된 보장 내용이 필요합니다.</p>
+        <h4>장점: 치아교정 비용 절감 효과</h4>
+        <ul>
+          <li>치과교정 치료비의 일부를 지원받아 초기 비용 부담을 줄일 수 있습니다.</li>
+          <li>비급여 항목인 교정 치료에 대해 보장을 받을 수 있는 유일한 방법입니다.</li>
+          <li>장기간 소요되는 교정 치료 과정에서 발생할 수 있는 추가적인 비용(정기 검진, 유지 장치 등)을 일부 커버할 수 있습니다.</li>
+        </ul>
+        <h4>단점: 높은 보험료와 제한적인 보장</h4>
+        <ul>
+          <li>치과교정 특약은 일반 치과보험보다 보험료가 높게 책정될 수 있습니다.</li>
+          <li>대부분의 상품이 전체 비용을 보장하는 것이 아니라, 특정 한도 내에서 정액 보장(예: 100~300만원 한도)을 제공합니다.</li>
+          <li>면책/감액 기간이 길게 설정되어 있어 즉시 보장이 어렵습니다. (가입 후 최소 1~2년 대기)</li>
+          <li>이미 치아교정을 시작한 경우에는 가입이 불가능하거나 제한될 수 있습니다.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>치과교정보험 저렴하게 가입하는 팁 (2026년 가이드)</h2>
+        <p>높은 치과보험료 때문에 망설이는 분들을 위한 현실적인 가이드입니다. 2026년 현재 시장 상황을 반영하여 치과보험을 저렴하게 가입하는 방법을 제안합니다.</p>
+
+        <h3>1. 치아교정 계획이 있다면 일찍 가입하기</h3>
+        <p>치과보험은 면책기간과 감액기간이 존재하므로, 당장 교정을 시작할 계획이 없더라도 미리 가입하는 것이 유리합니다. 특히 나이가 들수록 보험료가 상승하고, 치아 상태에 따라 가입이 거절될 수도 있습니다. 젊을 때 저렴한 가격으로 가입해두면 좋습니다.</p>
+        <h3>2. 불필요한 보장은 최소화하기</h3>
+        <p>치과보험에는 충치, 임플란트, 크라운 등 다양한 보장이 포함되어 있습니다. 만약 주된 목적이 치아교정이라면, 불필요한 보장은 제외하고 교정 관련 특약만 선택하여 보험료를 절감할 수 있습니다. 갱신형보다는 비갱신형을 선택하는 것이 장기적으로 유리할 수 있습니다.</p>
+        <h3>3. 여러 보험사 상품 비교 견적 활용하기</h3>
+        <p>보험사마다 상품 구성과 보험료 책정 기준이 다릅니다. A사에서는 보장하지 않는 항목이 B사에서는 특약으로 보장될 수 있습니다. 여러 보험사의 상품을 비교 견적하여 나에게 필요한 보장 항목을 가장 저렴한 가격으로 제공하는 곳을 찾는 것이 중요합니다. 온라인 비교 사이트를 이용하면 시간을 절약할 수 있습니다.</p>
+
+        <h3 style="margin-top:50px;">함께 많이 찾는 키워드 (치과보험/치아교정)</h3>
+        <ul class="keyword-list">
+          <li>#치과교정보험</li>
+          <li>#치아교정 비용</li>
+          <li>#치아보험 비교견적</li>
+          <li>#치과보험 추천</li>
+          <li>#치과보험 순위</li>
+          <li>#치과보험 가입</li>
+          <li>#치아교정 보험 적용</li>
+          <li>#치과보험료 계산</li>
+          <li>#임플란트 보험</li>
+          <li>#어린이 치아보험</li>
+          <li>#성인 치아교정 보험</li>
+          <li>#부분 교정 보험</li>
+          <li>#투명 교정 비용</li>
+          <li>#치아교정 싼곳</li>
+          <li>#내돈내산 치과보험 후기</li>
+          <li>#치과보험 면책기간</li>
+          <li>#치과보험 장단점</li>
+          <li>#비급여 치과치료</li>
+          <li>#치아교정 장점</li>
+          <li>#치아교정 단점</li>
+          <li>#치과보험 보장 내용</li>
+          <li>#치아보험 가성비</li>
+          <li>#2026년 치과보험 트렌드</li>
+          <li>#치아교정 기간</li>
+          <li>#교정 치료 후기</li>
+          <li>#치아교정 예상 비용</li>
+          <li>#치아보험 저렴한곳</li>
+          <li>#교정 보험 특약</li>
+          <li>#치아보험 가입 팁</li>
+          <li>#치과보험 청구 방법</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>자주 묻는 질문 (FAQ)</h2>
+
+        <div class="faq-item">
+          <h3>Q1. 치과보험 가입 시 고지해야 하는 사항이 있나요?</h3>
+          <p>A. 네, 치과보험은 가입 시 현재 치아 상태에 대한 고지 의무가 있습니다. 현재 충치 치료 중이거나, 치주 질환을 앓고 있는 경우, 또는 치아교정 치료를 시작했거나 계획 중인 경우 등은 반드시 보험사에 알려야 합니다. 고지 의무 위반 시 보험금 지급이 거절될 수 있습니다.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q2. 치아교정 치료 후 치아 유지장치도 보험이 적용되나요?</h3>
+          <p>A. 치아 유지장치(리테이너)는 교정 치료의 마지막 단계로, 일반적으로 치아교정 치료와 함께 비급여 항목으로 분류되어 보험 적용이 어렵습니다. 다만, 특정 치과보험 상품의 교정 특약에서 유지장치 비용까지 포함하는 경우가 있으니 가입 시 약관을 꼼꼼히 확인해야 합니다.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q3. 어린이 치아보험과 성인 치과보험의 차이점은 무엇인가요?</h3>
+          <p>A. 어린이 치아보험은 영구치 관리뿐만 아니라 유치(젖니) 관리에 대한 보장이 포함되는 경우가 많으며, 치과교정 치료에 대한 보장도 성인 보험에 비해 비교적 너그러울 수 있습니다. 성인 보험은 주로 임플란트, 크라운 등 보철 치료에 집중합니다. 교정 치료 계획이 있다면 어린이 보험에 가입하는 것이 유리할 수 있습니다.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q4. 치과보험 비교견적 사이트를 이용하는 장점은 무엇인가요?</h3>
+          <p>A. 비교견적 사이트는 여러 보험사의 상품을 한 번에 비교할 수 있어 시간을 절약하고, 보장 내용과 보험료를 투명하게 비교할 수 있습니다. 특히 치과보험은 상품별 특약이 다양하여 전문가의 조언이 필요한 경우가 많은데, 비교 사이트를 통해 맞춤형 컨설팅을 받을 수 있습니다.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q5. 치아교정은 건강보험 급여 항목에 포함될 수 있나요?</h3>
+          <p>A. 일반적인 심미적 목적의 치아교정은 건강보험 급여 항목에서 제외됩니다. 다만, 선천적인 악안면 기형(구순구개열 등)이나 부정교합으로 인한 기능적 장애가 심한 경우, 혹은 수술을 동반하는 악교정 수술 전후 교정 치료는 급여 항목에 포함될 수 있습니다. 이 경우에도 자세한 기준은 건강보험공단에 문의해야 합니다.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>신뢰할 수 있는 외부 자료 및 참고 링크</h2>
+        <p>치과교정보험 및 치과 치료에 대한 정확한 정보 확인을 위해 다음의 공인된 기관 자료를 참고하십시오.</p>
+        <ul>
+          <li><a href="https://www.nhis.or.kr/" target="_blank" rel="noopener">국민건강보험공단 - 치과 건강보험 보장 정보</a> (치과 치료 급여 기준 및 적용 범위 확인)</li>
+          <li><a href="https://www.dental.or.kr/main/index.php" target="_blank" rel="noopener">대한치과의사협회 - 치과 치료 및 치과 상식 정보</a> (치과 치료 전문가 정보 및 가이드라인)</li>
+          <li><a href="https://www.law.go.kr/lsInfoP.do?lsiSeq=107380&efYd=20210101#0000" target="_blank" rel="noopener">「국민건강보험법 시행령」</a> (치과 진료 급여 대상에 대한 법적 근거)</li>
+          <li><a href="https://ko.wikipedia.org/wiki/%EC%B9%98%EA%B3%BC%EB%B3%B4%ED%97%98" target="_blank" rel="noopener">치과보험 - 위키백과</a> (치과보험의 일반적인 정의 및 역사적 배경)</li>
+          <li><a href="https://www.consumer.go.kr/consumer/bbs/selectBbs.do?pageType=view&bbsId=bbs02&mcode=1003405&row=1&no=120002874" target="_blank" rel="noopener">한국소비자원 - 치과보험 관련 소비자 정보 및 피해 사례</a> (보험 가입 시 주의사항 및 소비자 권리)</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // FAQ 토글 기능
+    document.querySelectorAll('.faq-item h3').forEach(item => {
+      item.addEventListener('click', event => {
+        const parent = item.parentElement;
+        parent.classList.toggle('active');
+      });
+    });
+  </script>
+
+  
